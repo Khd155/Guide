@@ -23,7 +23,8 @@
   --sidebar-w: 240px;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+html { overflow: hidden; height: 100%; }
+body { font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif; background: var(--bg); color: var(--text); height: 100%; overflow: hidden; }
 
 /* SPLASH */
 #splash { position:fixed; inset:0; z-index:1000; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0; }
@@ -111,7 +112,7 @@ body { font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif; backgr
 .sb-url { font-size:10px; color:var(--muted); text-align:center; font-family:monospace; }
 
 /* MAIN */
-.main { flex:1; margin-right:var(--sidebar-w); min-height:100vh; transition:margin 0.35s; }
+.main { flex:1; margin-right:var(--sidebar-w); height:100vh; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; transition:margin 0.35s; }
 
 /* TOPBAR */
 .topbar { position:sticky; top:0; z-index:90; background:rgba(15,10,7,0.88); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); padding:0 28px; height:58px; display:flex; align-items:center; gap:12px; }
@@ -334,7 +335,7 @@ body { font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif; backgr
 @media (max-width:768px) {
   :root { --sidebar-w:85vw; }
   .sidebar { display:none!important; }
-  .main { margin-right:0; }
+  .main { margin-right:0; height:100vh; overflow-y:auto; }
   .overlay { display:none!important; }
   .topbar { height:52px; padding:0 14px; gap:8px; }
   .topbar-logo { width:34px; height:34px; }

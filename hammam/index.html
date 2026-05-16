@@ -31,10 +31,11 @@
   --active-color: var(--gold); --active-bg: var(--sm-bg); --active-glow: var(--sm-glow);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
+html { overflow: hidden; height: 100%; }
 body {
   font-family: 'IBM Plex Sans Arabic', 'Tajawal', Arial, sans-serif;
   background: var(--bg); color: var(--text);
-  min-height: 100vh; overflow-x: hidden;
+  height: 100%; overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -247,7 +248,10 @@ body {
 .main {
   flex: 1; padding: 0;
   margin-right: var(--sidebar-w);
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .topbar {
   display: flex; align-items: center; justify-content: space-between;
@@ -517,7 +521,7 @@ body {
   :root { --sidebar-w: 0px; }
   .sidebar { transform: translateX(100%); width: 280px; }
   .sidebar.open { transform: translateX(0); }
-  .main { margin-right: 0; padding-bottom: 80px; }
+  .main { margin-right: 0; padding-bottom: 80px; height: 100vh; overflow-y: auto; }
   .topbar { padding: 14px 16px; }
   #content-area { padding: 20px 16px; }
   .hero { padding: 24px 20px; border-radius: 14px; }
@@ -1835,7 +1839,7 @@ function renderPage(idx) {
     activePg.appendChild(foot);
 
     // Scroll top
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    document.querySelector('.main').scrollTo({top: 0, behavior: 'smooth'});
   }
 }
 
